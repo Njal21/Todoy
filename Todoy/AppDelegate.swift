@@ -1,37 +1,24 @@
-//
-//  AppDelegate.swift
-//  Todoy
-//
-//  Created by Njål Torgnes Kristensen on 15/10/2019.
-//  Copyright © 2019 Norsk Elæring. All rights reserved.
-//
-
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-       
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+
+        
+        do {
+            _ = try Realm()
+        } catch {
+            print("Error initialising new realm, \(error)")
+        }
+        
         
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication){
-        print("applicationDidEnterBackground")
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-
 }
-
